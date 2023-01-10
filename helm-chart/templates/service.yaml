@@ -9,6 +9,6 @@ spec:
   ports:
     - name: node
       port: {{ .Values.service.port }}
-      targetPort: 3006
+      targetPort: {{ .Values.service.targetPort }}
   selector:
     {{- include "helm-chart.selectorLabels" . | nindent 4 }}
