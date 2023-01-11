@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: big-hitter-api
+  repository: unknown
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.2.0
+  tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
@@ -16,7 +16,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
@@ -38,11 +38,11 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 3006
-  targetPort: 3006
+  port: 80
+  targetPort: 80
 
 ingress:
-  enabled: true
+  enabled: false
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
@@ -72,7 +72,7 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 2
-  maxReplicas: 4
+  maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
